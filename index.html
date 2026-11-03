@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#253d2c">
+  <meta name="description" content="Um café gostoso, boa comida mineira e um cantinho de natureza em Alfenas. Conheça o Bendito Café, ao lado do Zoológico Municipal.">
+  <title>Bendito Café | Uma pausa boa em Alfenas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #253d2c;
+      --forest-deep: #1b3022;
+      --leaf: #758b56;
+      --cream: #f7f3e8;
+      --paper: #fffdf7;
+      --ink: #292b23;
+      --muted: #77776b;
+      --terracotta: #b76545;
+      --gold: #d3a64a;
+      --line: #e8e1d3;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); font-size: 15px; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; object-fit: cover; }
+    button { font: inherit; }
+    .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--leaf); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+    .eyebrow::before { width: 22px; height: 1px; background: currentColor; content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
+    h2 { margin-bottom: 15px; font-size: clamp(34px, 4vw, 49px); line-height: 1.12; }
+    .section-intro { max-width: 500px; color: var(--muted); }
+
+    .topbar { height: 35px; display: flex; align-items: center; justify-content: center; gap: 9px; color: #f4eddd; background: var(--forest-deep); font-size: 11px; letter-spacing: .3px; }
+    .topbar span { color: #e0b75e; }
+    header { position: absolute; z-index: 3; top: 35px; right: 0; left: 0; color: white; }
+    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgb(255 255 255 / 27%); }
+    .brand { display: inline-flex; align-items: center; gap: 11px; }
+    .brand-mark { width: 39px; height: 39px; display: grid; place-items: center; border: 1px solid rgb(255 255 255 / 65%); border-radius: 50%; font-family: var(--serif); font-size: 21px; }
+    .brand-name { display: block; font-family: var(--serif); font-size: 20px; line-height: 1.1; }
+    .brand-sub { display: block; margin-top: 3px; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 32px; font-size: 12px; }
+    .nav-links a:not(.nav-cta) { color: rgb(255 255 255 / 86%); transition: color .2s; }
+    .nav-links a:not(.nav-cta):hover { color: white; }
+    .nav-cta, .button { min-height: 43px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 0 18px; border: 1px solid transparent; background: var(--gold); color: var(--forest-deep); font-size: 12px; font-weight: 700; transition: background .2s, transform .2s; }
+    .nav-cta:hover, .button:hover { background: #e0b75e; transform: translateY(-2px); }
+    .menu-toggle { display: none; width: 42px; height: 42px; place-items: center; border: 1px solid rgb(255 255 255 / 50%); background: transparent; color: white; cursor: pointer; }
+
+    .hero { min-height: 660px; min-height: min(760px, 88svh); position: relative; display: flex; align-items: center; overflow: hidden; color: white; background: #354b37; }
+    .hero-photo { position: absolute; inset: 0; height: 100%; object-position: center 54%; }
+    .hero::after { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(22 37 26 / 72%) 0%, rgb(22 37 26 / 42%) 48%, rgb(22 37 26 / 5%) 100%), linear-gradient(0deg, rgb(22 37 26 / 16%), transparent 48%); content: ""; }
+    .hero-inner { position: relative; z-index: 1; width: min(1160px, calc(100% - 64px)); margin: 95px auto 0; }
+    .hero-kicker { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; color: #f0c967; font-size: 11px; font-weight: 600; letter-spacing: 1.7px; text-transform: uppercase; }
+    .hero-kicker::before { width: 27px; height: 1px; background: currentColor; content: ""; }
+    .hero h1 { max-width: 610px; margin-bottom: 20px; font-size: clamp(58px, 8.3vw, 100px); line-height: .98; letter-spacing: 0; }
+    .hero h1 em { color: #e6c475; font-weight: 500; }
+    .hero-copy { max-width: 420px; margin-bottom: 29px; color: rgb(255 255 255 / 84%); font-size: 15px; line-height: 1.8; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 11px; }
+    .button-outline { border-color: rgb(255 255 255 / 62%); background: transparent; color: white; }
+    .button-outline:hover { background: rgb(255 255 255 / 12%); }
+    .hero-rating { position: absolute; z-index: 1; right: max(32px, calc((100% - 1160px) / 2)); bottom: 34px; display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px solid rgb(255 255 255 / 35%); background: rgb(27 48 34 / 47%); backdrop-filter: blur(8px); }
+    .rating-stars { color: #f0c967; font-size: 15px; letter-spacing: 2px; }
+    .rating-copy { color: rgb(255 255 255 / 86%); font-size: 11px; line-height: 1.4; }
+    .rating-copy strong { color: white; font-size: 14px; }
+
+    .welcome { padding: 82px 0 88px; background: var(--cream); }
+    .welcome-grid { display: grid; grid-template-columns: 1fr 1.05fr; align-items: center; gap: 88px; }
+    .welcome-copy h2 { margin-top: 14px; }
+    .welcome-copy p { max-width: 455px; color: var(--muted); }
+    .welcome-copy .button { margin-top: 9px; background: var(--forest); color: white; }
+    .welcome-copy .button:hover { background: var(--forest-deep); }
+    .welcome-photos { position: relative; min-height: 400px; }
+    .welcome-main { position: absolute; top: 0; right: 0; width: 77%; height: 345px; }
+    .welcome-small { position: absolute; bottom: 0; left: 0; width: 47%; height: 190px; border: 8px solid var(--cream); }
+    .photo-note { position: absolute; right: 0; bottom: 13px; display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 10px; }
+
+    .favorites { padding: 83px 0 90px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
+    .section-heading h2 { margin: 12px 0 0; }
+    .section-heading .section-intro { max-width: 350px; margin-bottom: 5px; font-size: 13px; }
+    .food-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .food-card { min-width: 0; }
+    .food-image { height: 250px; overflow: hidden; background: var(--cream); }
+    .food-image img { height: 100%; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+    .food-card:hover .food-image img { transform: scale(1.045); }
+    .food-meta { display: flex; align-items: center; justify-content: space-between; padding-top: 15px; }
+    .food-meta h3 { margin: 0; font-size: 22px; }
+    .food-tag { color: var(--terracotta); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    .food-description { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+
+    .nature { position: relative; min-height: 400px; display: flex; align-items: center; overflow: hidden; color: white; background: var(--forest); }
+    .nature-photo { position: absolute; inset: 0; height: 100%; }
+    .nature::after { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(26 47 32 / 89%), rgb(26 47 32 / 52%) 60%, rgb(26 47 32 / 10%)); content: ""; }
+    .nature-content { position: relative; z-index: 1; width: min(1160px, calc(100% - 64px)); margin: auto; padding: 75px 0; }
+    .nature-content .eyebrow { color: #e2c47f; }
+    .nature h2 { max-width: 550px; margin: 16px 0; font-size: clamp(37px, 5vw, 58px); }
+    .nature p { max-width: 420px; margin-bottom: 24px; color: rgb(255 255 255 / 82%); font-size: 14px; }
+    .nature .button { background: var(--paper); color: var(--forest); }
+
+    .details { padding: 83px 0; background: var(--cream); }
+    .details-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
+    .details h2 { margin-top: 12px; }
+    .detail-list { display: grid; gap: 0; margin-top: 28px; border-top: 1px solid var(--line); }
+    .detail-row { display: grid; grid-template-columns: 25px 1fr; gap: 13px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .detail-icon { color: var(--terracotta); font-size: 17px; text-align: center; }
+    .detail-row strong { display: block; margin-bottom: 2px; font-size: 12px; }
+    .detail-row span { color: var(--muted); font-size: 12px; }
+    .map-panel { min-height: 350px; position: relative; overflow: hidden; background: #ddd9ca; }
+    .map-panel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: saturate(.72); }
+    .map-caption { position: absolute; right: 13px; bottom: 13px; left: 13px; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; background: var(--paper); box-shadow: 0 3px 18px rgb(34 34 24 / 12%); }
+    .map-caption strong { display: block; font-size: 12px; }
+    .map-caption span { color: var(--muted); font-size: 10px; }
+    .map-caption a { flex: 0 0 auto; color: var(--forest); font-size: 11px; font-weight: 700; }
+
+    .review { padding: 75px 0; text-align: center; }
+    .review .eyebrow { justify-content: center; }
+    .review h2 { margin: 12px auto; }
+    .review-stars { margin: 15px 0 4px; color: var(--gold); font-size: 19px; letter-spacing: 4px; }
+    .review blockquote { max-width: 670px; margin: 20px auto 16px; color: #55574b; font-family: var(--serif); font-size: clamp(20px, 2.4vw, 27px); line-height: 1.5; }
+    .review-source { color: var(--muted); font-size: 11px; }
+    .review-link { display: inline-block; margin-top: 20px; color: var(--forest); font-size: 11px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+
+    .visit-banner { padding: 43px 0; color: white; background: var(--forest); }
+    .visit-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .visit-inner h2 { margin: 0; font-size: 29px; }
+    .visit-inner p { margin: 5px 0 0; color: rgb(255 255 255 / 70%); font-size: 12px; }
+    .visit-actions { display: flex; gap: 10px; }
+    .visit-actions .button-outline { border-color: rgb(255 255 255 / 42%); }
+    footer { padding: 23px 0; color: var(--muted); background: #f3efe4; font-size: 10px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-brand { color: var(--forest); font-family: var(--serif); font-size: 16px; }
+    .footer-links { display: flex; gap: 18px; }
+    .footer-links a:hover { color: var(--forest); }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
+    @media (max-width: 760px) {
+      .wrap, .hero-inner, .nature-content { width: min(100% - 40px, 560px); }
+      .topbar { font-size: 10px; }
+      .nav { min-height: 70px; }
+      .menu-toggle { display: grid; }
+      .nav-links { position: absolute; top: 70px; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 20px 17px; background: var(--forest-deep); }
+      .nav-links.open { display: flex; flex-direction: column; }
+      .nav-links a:not(.nav-cta) { padding: 11px 0; }
+      .nav-cta { margin-top: 8px; }
+      .hero { min-height: 700px; min-height: min(730px, 88svh); }
+      .hero-photo { object-position: 58% center; }
+      .hero::after { background: linear-gradient(90deg, rgb(22 37 26 / 68%), rgb(22 37 26 / 32%)), linear-gradient(0deg, rgb(22 37 26 / 22%), transparent 55%); }
+      .hero-inner { margin-top: 78px; }
+      .hero h1 { max-width: 470px; font-size: clamp(57px, 13vw, 82px); }
+      .hero-copy { max-width: 350px; font-size: 14px; }
+      .hero-rating { right: 20px; bottom: 20px; }
+      .welcome { padding: 66px 0 73px; }
+      .welcome-grid, .details-grid { grid-template-columns: 1fr; gap: 36px; }
+      .welcome-photos { min-height: 340px; }
+      .welcome-main { height: 290px; }
+      .welcome-small { height: 155px; }
+      .photo-note { bottom: 1px; }
+      .favorites, .details { padding: 67px 0; }
+      .section-heading { display: block; margin-bottom: 25px; }
+      .section-heading .section-intro { margin: 12px 0 0; }
+      .food-grid { grid-template-columns: 1fr; gap: 25px; }
+      .food-image { height: 210px; }
+      .food-meta h3 { font-size: 19px; }
+      .food-tag { font-size: 9px; }
+      .nature { min-height: 410px; }
+      .nature-photo { object-position: 65% center; }
+      .details-grid { gap: 26px; }
+      .map-panel { min-height: 310px; }
+      .visit-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 440px) {
+      .hero { min-height: 660px; }
+      .hero h1 { font-size: 57px; }
+      .hero-actions { align-items: stretch; flex-direction: column; max-width: 220px; }
+      .food-grid { grid-template-columns: 1fr; gap: 24px; }
+      .food-image { height: 245px; }
+      .visit-actions { width: 100%; flex-direction: column; }
+      .footer-inner { align-items: flex-start; flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar"><span>★</span> 4,5 no Google <span>·</span> Uma pausa tranquila ao lado do Zoológico de Alfenas</div>
+  <header>
+    <nav class="nav wrap" aria-label="Navegação principal">
+      <a class="brand" href="#inicio" aria-label="Bendito Café, início">
+        <span class="brand-mark">B</span>
+        <span><span class="brand-name">Bendito Café</span><span class="brand-sub">Alfenas · Minas Gerais</span></span>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div class="nav-links">
+        <a href="#casa">A casa</a><a href="#sabores">Sabores</a><a href="#visite">Como chegar</a>
+        <a class="nav-cta" href="https://www.instagram.com/benditocafe_alfenas/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <img class="hero-photo" src="https://lh3.googleusercontent.com/grass-cs/AABkmLdwlYSnutuQBsYoL6MdtyoHJutmI0_73ddEBJV1kdhCB28a203e_XOmUMhkQES5yB9-9IIJCTkvQ6zcyDMpagJyEpQXp0dyZuhsBNHMho7_94pNp_UUOIz5LXDrm3a4jwvHvT0=w1600-h900-k-no" alt="Varanda do Bendito Café com mesas externas e vista para árvores" fetchpriority="high">
+      <div class="hero-inner">
+        <div class="hero-kicker">Um cantinho de calma em Alfenas</div>
+        <h1>Um café.<br>Uma pausa.<br><em>Um lugar seu.</em></h1>
+        <p class="hero-copy">Café quentinho, quitandas gostosas e a tranquilidade da natureza. Um convite para desacelerar um pouquinho.</p>
+        <div class="hero-actions">
+          <a class="button" href="https://www.google.com/maps/dir/?api=1&destination=Bendito+Caf%C3%A9%2C+Rod.+Domingo+Ribeiro+Resende%2C+Alfenas+-+MG" target="_blank" rel="noreferrer">Como chegar <span aria-hidden="true">↗</span></a>
+          <a class="button button-outline" href="#sabores">Conheça a casa <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <a class="hero-rating" href="https://www.google.com/maps/search/?api=1&query=Bendito+Caf%C3%A9+Alfenas" target="_blank" rel="noreferrer" aria-label="Ver avaliações do Bendito Café no Google">
+        <span class="rating-stars">★★★★★</span><span class="rating-copy"><strong>4,5</strong> · 258 avaliações<br>no Google</span>
+      </a>
+    </section>
+
+    <section class="welcome" id="casa">
+      <div class="welcome-grid wrap">
+        <div class="welcome-copy reveal">
+          <span class="eyebrow">Um refúgio pertinho de você</span>
+          <h2>Entre o verde<br>e um bom café.</h2>
+          <p>Ao lado do Zoológico Municipal, o Bendito é daqueles lugares para chegar sem pressa. Tem mesa ao ar livre, sombra das árvores e um cardápio cheio de motivos para ficar mais um pouco.</p>
+          <p>Venha para o café da manhã, uma conversa boa ou aquela pausa merecida no meio do dia.</p>
+          <a class="button" href="https://www.instagram.com/benditocafe_alfenas/" target="_blank" rel="noreferrer">Acompanhe no Instagram <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="welcome-photos reveal">
+          <img class="welcome-main" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TZCVKYn25V-xeDFLUhy6ClXCQMcfd7tfUU3L_M3XquQYYdygZGrKcYnKakKC9JSy9CdQ6SDUA6Qud2-xxpI6_PvbzZhG2CHi8yQc2M3hWhPQEByfjMgSMdIj5MPZGZZbDi64TdReZSNRgy=w1000-h1400-k-no" alt="Bebidas e quitanda servidas na varanda do Bendito Café" loading="lazy">
+          <img class="welcome-small" src="https://lh3.googleusercontent.com/grass-cs/AABkmLdwlYSnutuQBsYoL6MdtyoHJutmI0_73ddEBJV1kdhCB28a203e_XOmUMhkQES5yB9-9IIJCTkvQ6zcyDMpagJyEpQXp0dyZuhsBNHMho7_94pNp_UUOIz5LXDrm3a4jwvHvT0=w1600-h900-k-no" alt="Varanda do Bendito Café com vista para a mata" loading="lazy">
+          <a class="photo-note" href="https://www.google.com/maps/place/Bendito+Caf%C3%A9/@-21.4538257,-45.94012,17z/data=!4m6!3m5!1s0x94b5f54a4fde9777:0x1f6539aa910e9121!8m2!3d-21.4538257!4d-45.94012!16s%2Fg%2F11rq1xbwbr" target="_blank" rel="noreferrer">Fotos originais · Google Maps ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="favorites" id="sabores">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div><span class="eyebrow">Feito para saborear</span><h2>Pequenas grandes delícias.</h2></div>
+          <p class="section-intro">Um cardápio variado de cafés, quitandas e comidinhas para acompanhar cada momento do dia.</p>
+        </div>
+        <div class="food-grid">
+          <article class="food-card reveal">
+            <div class="food-image"><img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RE4iumM7vce4TbUTTeziMskfcGXy9NW2AvJMr1kCkXTGvsojzRK9GFISPxvkqEDvbD9pYKWCTmtlBnrE5npauRNirsLOx3KF8qXZ3PHlZddU4Bi3wuzkfjaF4FUm7eXvFcOcrzCQ=w1000-h1400-k-no" alt="Xícaras de café e quiche servidas no Bendito Café" loading="lazy"></div>
+            <div class="food-meta"><h3>Café e quiche</h3><span class="food-tag">Da casa</span></div>
+            <p class="food-description">Um café bem servido e uma pausa gostosa à mesa.</p>
+          </article>
+          <article class="food-card reveal">
+            <div class="food-image"><img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TZCVKYn25V-xeDFLUhy6ClXCQMcfd7tfUU3L_M3XquQYYdygZGrKcYnKakKC9JSy9CdQ6SDUA6Qud2-xxpI6_PvbzZhG2CHi8yQc2M3hWhPQEByfjMgSMdIj5MPZGZZbDi64TdReZSNRgy=w1100-h1500-k-no" alt="Bebidas e quitanda servidas na varanda do Bendito Café" loading="lazy"></div>
+            <div class="food-meta"><h3>Sabores de Minas</h3><span class="food-tag">Feito para saborear</span></div>
+            <p class="food-description">Quitandas e comidinhas para acompanhar a conversa, com a natureza por perto.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="nature">
+      <img class="nature-photo" src="https://lh3.googleusercontent.com/grass-cs/AABkmLdwlYSnutuQBsYoL6MdtyoHJutmI0_73ddEBJV1kdhCB28a203e_XOmUMhkQES5yB9-9IIJCTkvQ6zcyDMpagJyEpQXp0dyZuhsBNHMho7_94pNp_UUOIz5LXDrm3a4jwvHvT0=w1600-h900-k-no" alt="Vista da varanda do Bendito Café para a mata" loading="lazy">
+      <div class="nature-content reveal">
+        <span class="eyebrow">O melhor acompanhamento é lá fora</span>
+        <h2>O barulho das folhas.<br>O tempo no seu ritmo.</h2>
+        <p>Uma mesa externa, o verde por perto e um café sem nenhuma pressa. Traga a família, os amigos e até o seu pet.</p>
+        <a class="button" href="https://www.google.com/maps/dir/?api=1&destination=Bendito+Caf%C3%A9%2C+Rod.+Domingo+Ribeiro+Resende%2C+Alfenas+-+MG" target="_blank" rel="noreferrer">Venha conhecer <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="details" id="visite">
+      <div class="details-grid wrap">
+        <div class="reveal">
+          <span class="eyebrow">Vai ser bom receber você</span>
+          <h2>Encontre seu<br>cantinho.</h2>
+          <p class="section-intro">Estamos pertinho do Zoológico Municipal de Alfenas, em meio à natureza.</p>
+          <div class="detail-list">
+            <div class="detail-row"><span class="detail-icon" aria-hidden="true">⌖</span><div><strong>Endereço</strong><span>Rod. Domingo Ribeiro Resende, s/n<br>Jardim Aeroporto III · Alfenas, MG</span></div></div>
+            <div class="detail-row"><span class="detail-icon" aria-hidden="true">◷</span><div><strong>Horário</strong><span>Consulte os horários atualizados no Google antes da visita.</span></div></div>
+            <div class="detail-row"><span class="detail-icon" aria-hidden="true">♡</span><div><strong>Todo mundo é bem-vindo</strong><span>Mesas externas, espaço pet friendly e estacionamento gratuito.</span></div></div>
+            <div class="detail-row"><span class="detail-icon" aria-hidden="true">☎</span><div><strong>Fale com a gente</strong><span><a href="tel:+5535999729652">(35) 99972-9652</a></span></div></div>
+          </div>
+        </div>
+        <div class="map-panel reveal">
+          <iframe title="Mapa do Bendito Café em Alfenas" src="https://maps.google.com/maps?q=Bendito%20Caf%C3%A9%2C%20Rod.%20Domingo%20Ribeiro%20Resende%2C%20Alfenas%20MG&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="map-caption"><div><strong>Bendito Café</strong><span>Ao lado do Zoológico Municipal</span></div><a href="https://www.google.com/maps/dir/?api=1&destination=Bendito+Caf%C3%A9%2C+Rod.+Domingo+Ribeiro+Resende%2C+Alfenas+-+MG" target="_blank" rel="noreferrer">Abrir rotas ↗</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="review">
+      <div class="wrap reveal">
+        <span class="eyebrow">Quem vem, conta</span>
+        <div class="review-stars" aria-label="5 estrelas">★★★★★</div>
+        <h2>Um lugar que deixa saudade.</h2>
+        <blockquote>“Lugar muito gostoso, conexão com a natureza, comida excelente e bem receptivo.”</blockquote>
+        <div class="review-source">Avaliação de visitante no Google · Bendito Café, Alfenas</div>
+        <a class="review-link" href="https://www.google.com/maps/search/?api=1&query=Bendito+Caf%C3%A9+Alfenas" target="_blank" rel="noreferrer">Leia mais avaliações ↗</a>
+      </div>
+    </section>
+
+    <section class="visit-banner">
+      <div class="visit-inner wrap">
+        <div><h2>Seu próximo café pode ser aqui.</h2><p>Rod. Domingo Ribeiro Resende · Alfenas, Minas Gerais</p></div>
+        <div class="visit-actions"><a class="button" href="https://www.google.com/maps/dir/?api=1&destination=Bendito+Caf%C3%A9%2C+Rod.+Domingo+Ribeiro+Resende%2C+Alfenas+-+MG" target="_blank" rel="noreferrer">Traçar rota ↗</a><a class="button button-outline" href="tel:+5535999729652">Ligar para o café</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner wrap"><a class="footer-brand" href="#inicio">Bendito Café</a><span>Um cantinho de calma em Alfenas, MG.</span><div class="footer-links"><a href="https://www.google.com/maps/place/Bendito+Caf%C3%A9/@-21.4538257,-45.94012,17z/data=!4m6!3m5!1s0x94b5f54a4fde9777:0x1f6539aa910e9121!8m2!3d-21.4538257!4d-45.94012!16s%2Fg%2F11rq1xbwbr" target="_blank" rel="noreferrer">Fotos no Google Maps ↗</a><a href="https://www.instagram.com/benditocafe_alfenas/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="tel:+5535999729652">(35) 99972-9652</a></div></div>
+  </footer>
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.nav-links');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Abrir menu');
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+  </script>
+</body>
+</html>
